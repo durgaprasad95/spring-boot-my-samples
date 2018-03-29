@@ -13,7 +13,8 @@
 
 	Language:
 	<a href="?Language=en">English</a>|
-	<a href="?Language=es">Spanish</a>
+	<a href="?Lang=es">Spanish</a>|
+	<a href="?Lang=fr">French</a>
 	<form:form modelAttribute="exercise">
 		<table>
 			<tr>
