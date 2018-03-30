@@ -36,13 +36,13 @@ public class SampleSecureApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		SecurityContextHolder.getContext()
-				.setAuthentication(new UsernamePasswordAuthenticationToken("user", "N/A",
-						AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER")));
+		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("user", "N/A",
+				AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER")));
 		try {
-			System.out.println(this.service.secure());
-		}
-		finally {
+			System.out.println(this.service.denied());
+		} catch (Exception e) {
+			System.out.println("The Method is not Authorized for the accessing one to execute");
+		} finally {
 			SecurityContextHolder.clearContext();
 		}
 	}
