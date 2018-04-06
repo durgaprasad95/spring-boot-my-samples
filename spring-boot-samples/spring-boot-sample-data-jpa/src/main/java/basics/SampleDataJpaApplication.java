@@ -14,10 +14,16 @@
  * limitations under the License.
  */
 
-package sample.data.jpa.domain;
+package basics;
 
-public enum TripType {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-	BUSINESS, COUPLES, FAMILY, FRIENDS, SOLO
+@SpringBootApplication
+public class SampleDataJpaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SampleDataJpaApplication.class, args);
+	}
 
 }
