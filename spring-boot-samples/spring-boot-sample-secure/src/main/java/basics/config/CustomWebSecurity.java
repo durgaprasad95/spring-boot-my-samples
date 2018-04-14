@@ -35,27 +35,30 @@ public class CustomWebSecurity extends WebSecurityConfigurerAdapter {
 		return passwordEncoder;
 	}
 
-	/* create two users: admin and user.
-	 * Default USER mentioned in application.properties will be ignored.
-	 * Using AuthenticationManager and inMemory allocation
-	 * auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and().withUser("admin")
-		 .password("password").roles("ADMIN");
+	/*
+	 * create two users: admin and user. Default USER mentioned in
+	 * application.properties will be ignored. Using AuthenticationManager and
+	 * inMemory allocation
+	 * auth.inMemoryAuthentication().withUser("user").password("password").roles(
+	 * "USER").and().withUser("admin") .password("password").roles("ADMIN");
 	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// auth.jdbcAuthentication().dataSource(dataSource);
 		auth.userDetailsService(userDetailsService).passwordEncoder(customPasswordEncoder());
 	}
 
-	/* This method tells which will be accessed by what Users(NORMAL USER/ADMIN) and what pages will be loaded for all users
-	 * login pages (Defaults)
+	/*
+	 * This method tells which will be accessed by what Users(NORMAL USER/ADMIN) and
+	 * what pages will be loaded for all users login pages (Defaults)
 	 */
 	@Override
 	public void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.headers().frameOptions().sameOrigin();
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/console")
-				.hasAnyRole("ADMIN").anyRequest().authenticated().antMatchers("/[^console]**")
-				.hasAnyRole("USER", "ADMIN").anyRequest().authenticated().and().formLogin().permitAll().and().logout()
-				.permitAll();
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/admin/**")
+				.hasRole("ADMIN").anyRequest().authenticated().antMatchers("/**").hasAnyRole("USER", "ADMIN")
+				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+				.permitAll().and().httpBasic();
 	}
 
 }

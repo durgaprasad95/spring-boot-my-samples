@@ -20,10 +20,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleDataJpaApplication {
+public class Application {
+
+	static {
+		try {
+			org.h2.tools.Server.createTcpServer().start();
+		} catch (Exception e) {
+			System.out.println("h2 Server not started.Cause is " + e.getCause());
+		}
+	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SampleDataJpaApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

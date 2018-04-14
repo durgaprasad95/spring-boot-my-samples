@@ -75,11 +75,11 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public void setRoles(List<GrantedAuthority> roles) {
-		this.roles = roles;
+	public void setRoles(List<GrantedAuthority> list) {
+		this.roles = list;
 	}
 
-	public Collection<? extends GrantedAuthority> getRoles() {
+	public List<GrantedAuthority> getRoles() {
 		return roles;
 	}
 

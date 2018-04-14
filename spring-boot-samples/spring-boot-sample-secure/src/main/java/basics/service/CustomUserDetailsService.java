@@ -1,6 +1,7 @@
 package basics.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,13 +42,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private List<GrantedAuthority> getRoles(String userName) {
 		String[] roles = authorityRepository.findByCustomQuery(userName).getRoles().split(",");
-		List<GrantedAuthority> listRoles = new ArrayList<GrantedAuthority>();
-		int length = roles.length;
-		for (int i = 0; i < length; i++) {
-			listRoles.add(new SimpleGrantedAuthority(roles[i]));
-			System.out.println(roles[i]);
-		}
-		return listRoles;
+		List<String> temp = Arrays.asList(roles);
+		List<GrantedAuthority> result = new ArrayList<GrantedAuthority>();
+		temp.forEach(role -> result.add(new SimpleGrantedAuthority(role)));
+		return result;
 	}
 
 }
