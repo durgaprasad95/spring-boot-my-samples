@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/home.css" rel="stylesheet">
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 <style type="text/css">
 .error {
@@ -18,6 +20,32 @@
 </style>
 </head>
 <body class="container-fluid">
+	<div class="row-fluid">
+		<nav class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand">Carting Site</a> <a class="btn-navbar"
+				data-toggle="collapse" data-target=".nav-collapse"> <i
+				class="icon-bar"></i> <i class="icon-bar"></i> <i class="icon-bar"></i>
+			</a>
+			<div class="nav-collapse collapse">
+				<ul class="nav pull-right">
+					<c:choose>
+						<c:when
+							test="${sessionScope.user != null || sessionScope.user != ''}">
+							<li><a href="eror">Home</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="home">Home</a></li>
+						</c:otherwise>
+					</c:choose>
+					<li><a href="cart">Cart</a></li>
+					<li><a href="account">Account</a></li>
+					<li class="login"><a href="login">Log In</a></li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+	</div>
 	<div class="row-fluid">
 		<div class=" offset3 text-center span7">
 			<h1>Enter Following Details</h1>

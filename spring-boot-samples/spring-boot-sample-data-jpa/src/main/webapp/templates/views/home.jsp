@@ -9,6 +9,7 @@
 <title>Home Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/home.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container-fluid">
@@ -24,7 +25,7 @@
 							<li><a href="home">Home</a></li>
 							<li><a href="cart">Cart</a></li>
 							<li><a href="account">${user.username}</a></li>
-							<li><a href="logout">Log Out</a></li>
+							<li><a href="">Log Out</a></li>
 						</ul>
 					</div>
 				</div>

@@ -34,4 +34,15 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public boolean validate(String username) throws Exception {
+		User tempUser = userRepository.findByUsername(username);
+		if (tempUser != null) {
+			System.out.println("User can be added to Database");
+			return true;
+		} else {
+			throw new Exception("User with that Username is already exits.Please select other Username");
+		}
+	}
+
 }

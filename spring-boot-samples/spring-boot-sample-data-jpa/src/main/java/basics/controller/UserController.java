@@ -48,8 +48,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public String sign(@Valid @ModelAttribute User user, BindingResult result) {
-		if (!result.hasErrors()) {
+	public String sign(@Valid @ModelAttribute User user, BindingResult result) throws Exception {
+		if (!result.hasErrors() && userService.validate(user.getUsername())) {
 			userService.addUser(user);
 			System.out.println("Added new user");
 			return "login";

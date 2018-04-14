@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+body {
+	color: yellow;
+	background-image: url("cart.jpg");
+	background-size: 1870px 760px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-image: url("cart.jpg");
+}
