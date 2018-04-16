@@ -22,7 +22,7 @@
 					<li><a href="home">Home</a></li>
 					<li><a href="cart">Cart</a></li>
 					<li><a href="account">Account</a></li>
-					<li class="login"><a href="login">Log In</a></li>
+					<li><a href="login">Log In</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,11 +30,6 @@
 	</div>
 	<script src="jquery-1.8.3.js">
 		
-	</script>
-	<script>
-		jQuery(document).ready(function($) {
-			$('.container-fluid').invertingImgText();
-		});
 	</script>
 	<script src="assets/js/bootstrap.js">
 		

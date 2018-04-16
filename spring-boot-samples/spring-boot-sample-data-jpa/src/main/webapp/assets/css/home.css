@@ -8,3 +8,11 @@ body {
 	background-attachment: fixed;
 	background-image: url("cart.jpg");
 }
+
+#account-menu {
+	height: 100%;
+}
+
+#account-content {
+	background-color: transparent;
+}

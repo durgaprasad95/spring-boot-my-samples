@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,13 +59,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout(Model model) {
-		User user = new User();
-		user.setUsername("username");
-		user.setPassword("*********");
-		model.addAttribute("message", "Logged Out Successfully.");
-		model.addAttribute("user", user);
-		return "redirect:index.jsp";
+	public String logout(@Valid @ModelAttribute User user) {
+		if (!StringUtils.isEmpty(user.getUsername()))
+			return "logout";
+		else
+			return "login";
+	}
+
+	@RequestMapping(value = "account", method = RequestMethod.GET)
+	public String account(@Valid @ModelAttribute User user) {
+		if (!StringUtils.isEmpty(user.getUsername()))
+			return "account";
+		else
+			return "home";
 	}
 
 }

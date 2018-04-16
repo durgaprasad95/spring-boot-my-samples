@@ -15,12 +15,12 @@ public class Vegetable {
 	private @Transient int units;
 	private @Transient String measuringScale;
 
-	@Id
 	@SequenceGenerator(name = "generator", initialValue = 1)
 	@GeneratedValue(generator = "generator")
 	@Column(name = "ID")
 	private Long id;
 
+	@Id
 	@Column(name = "NAME")
 	private String name;
 

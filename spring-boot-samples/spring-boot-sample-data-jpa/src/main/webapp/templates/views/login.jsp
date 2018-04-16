@@ -29,18 +29,10 @@
 			</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
-					<c:choose>
-						<c:when
-							test="${sessionScope.user != null || sessionScope.user != ''}">
-							<li><a href="eror">Home</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="home">Home</a></li>
-						</c:otherwise>
-					</c:choose>
+					<li><a href="home">Home</a></li>
 					<li><a href="cart">Cart</a></li>
 					<li><a href="account">Account</a></li>
-					<li class="login"><a href="login">Log In</a></li>
+					<li><a href="login">Log In</a></li>
 				</ul>
 			</div>
 		</div>
@@ -70,7 +62,6 @@
 				</table>
 			</form:form>
 		</div>
-	</div>
 	</div>
 	<script type="text/javascript" src="jquery-1.8.3.js">
 		

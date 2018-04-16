@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row-fluid">
 			<nav class="navbar navbar-inverse">
 				<div class="navbar-inner">
 					<a class="brand">Carting Site</a> <a class="btn-navbar"
@@ -22,10 +23,21 @@
 					</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
-							<li><a href="home">Home</a></li>
-							<li><a href="cart">Cart</a></li>
-							<li><a href="account">${user.username}</a></li>
-							<li><a href="">Log Out</a></li>
+							<c:choose>
+								<c:when
+									test="${sessionScope.user != null || sessionScope.user != ''}">
+									<li><a href="home">Home</a></li>
+									<li><a href="cart">Cart</a></li>
+									<li><a href="account">${user.username}</a></li>
+									<li><a href="logout">Log Out</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="error">Home</a></li>
+									<li><a href="error">Cart</a></li>
+									<li><a href="error">Account</a></li>
+									<li><a href="error">Log Out</a></li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</div>
 				</div>
