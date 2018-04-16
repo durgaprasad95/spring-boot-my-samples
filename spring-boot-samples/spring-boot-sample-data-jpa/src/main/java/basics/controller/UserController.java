@@ -59,19 +59,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout(@Valid @ModelAttribute User user) {
+	public String logout(@ModelAttribute User user) {
 		if (!StringUtils.isEmpty(user.getUsername()))
 			return "logout";
 		else
 			return "login";
-	}
-
-	@RequestMapping(value = "account", method = RequestMethod.GET)
-	public String account(@Valid @ModelAttribute User user) {
-		if (!StringUtils.isEmpty(user.getUsername()))
-			return "account";
-		else
-			return "home";
 	}
 
 }

@@ -21,7 +21,7 @@ public class Vegetable {
 	private Long id;
 
 	@Id
-	@Column(name = "NAME")
+	@Column(name = "VEGETABLE_NAME")
 	private String name;
 
 	@Column(name = "QUANTITY")

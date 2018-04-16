@@ -9,4 +9,6 @@ public interface UserService {
 	User addUser(User user);
 
 	boolean validate(String username) throws Exception;
+
+	User getUser(String username);
 }

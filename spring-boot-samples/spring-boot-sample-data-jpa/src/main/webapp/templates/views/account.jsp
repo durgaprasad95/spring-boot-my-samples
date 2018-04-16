@@ -17,8 +17,22 @@
 	color: #ff0000;
 }
 </style>
+<script src="assets/js/underscore-min.js"></script>
+<script src="assets/js/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('account', []);
+		app.controller('accountUser', function($scope, $http) {
+			ctrl.user = "";
+			$http.get("http://localhost:8080/jpa/account-user/{ctrl.username}")
+					.then(function(response) {
+						ctrl.user = response.data;
+					});
+			ctrl.Keys = _.keys(ctrl.user);
+			ctrl.Values = _.values(ctrl.user);
+		});
+	</script>
 </head>
-<body>
+<body ng-app="account">
 	<div class="row-fluid">
 		<nav class="navbar navbar-inverse">
 		<div class="navbar-inner">
@@ -58,10 +72,16 @@
 		</div>
 
 		<div id="account-content" class="span7 pull-right tab-content">
-			<div id="user" class="tab-pane active">
-				<h3>HOME</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<div id="user" class="tab-pane active" ng-controller="accountUser">
+				<h3>User Details</h3>
+				<table class="table table-striped">
+					<tbody>
+						<tr ng-repeat="x in [0,1,2]">
+							<td class="span2">{{Keys}}[x]</td>
+							<td class="offset1">{{Values}}[x]</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div id="value" class="tab-pane">
 				<h3>Menu 1</h3>
@@ -80,11 +100,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="jquery-1.8.3.js">
-		
-	</script>
-	<script src="assets/js/bootstrap.js">
-		
-	</script>
+	<script type="text/javascript" src="jquery-1.8.3.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

@@ -16,3 +16,7 @@ body {
 #account-content {
 	background-color: transparent;
 }
+
+.table-striped tbody tr:nth-child(odd) td {
+	background-color: #f9f9f9;
+}

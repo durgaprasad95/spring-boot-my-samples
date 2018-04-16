@@ -3,8 +3,6 @@ package basics.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -27,6 +25,12 @@ public class User {
 	@NotNull
 	private String password;
 
+	@Column(name = "EMAIL")
+	private String email;
+
+	@Column(name = "WALLET")
+	private int wallet;
+
 	public User() {
 
 	}
@@ -34,6 +38,8 @@ public class User {
 	public User(User user) {
 		this.username = user.username;
 		this.password = user.password;
+		this.email = user.email;
+		this.wallet = user.wallet;
 	}
 
 	public Long getId() {
@@ -58,6 +64,22 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(int wallet) {
+		this.wallet = wallet;
 	}
 
 }
