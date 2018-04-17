@@ -3,13 +3,16 @@ package basics.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import basics.domain.User;
@@ -64,6 +67,22 @@ public class UserController {
 			return "logout";
 		else
 			return "login";
+	}
+
+	@RequestMapping(value = "account", method = RequestMethod.GET)
+	public String account(@ModelAttribute User user) {
+		if (!StringUtils.isEmpty(user.getUsername()))
+			return "account";
+		else
+			return "home";
+	}
+
+	@RequestMapping(value = "account-user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public User accountUser(@ModelAttribute User user) {
+		System.out.println("###");
+		User result = userService.getUser(user.getUsername());
+		return result;
 	}
 
 }

@@ -17,22 +17,12 @@
 	color: #ff0000;
 }
 </style>
-<script src="assets/js/underscore-min.js"></script>
-<script src="assets/js/angular.min.js"></script>
-	<script type="text/javascript">
-		var app = angular.module('account', []);
-		app.controller('accountUser', function($scope, $http) {
-			ctrl.user = "";
-			$http.get("http://localhost:8080/jpa/account-user/{ctrl.username}")
-					.then(function(response) {
-						ctrl.user = response.data;
-					});
-			ctrl.Keys = _.keys(ctrl.user);
-			ctrl.Values = _.values(ctrl.user);
-		});
-	</script>
+
+<script type="text/javascript">
+	
+</script>
 </head>
-<body ng-app="account">
+<body ng-app="accountPage">
 	<div class="row-fluid">
 		<nav class="navbar navbar-inverse">
 		<div class="navbar-inner">
@@ -47,7 +37,7 @@
 							test="${sessionScope.user != null || sessionScope.user != ''}">
 							<li><a href="home">Home</a></li>
 							<li><a href="cart">Cart</a></li>
-							<li><a href="account">${user.username}</a></li>
+							<li><a id="sessionUsername" href="account">${user.username}</a></li>
 							<li><a href="logout">Log Out</a></li>
 						</c:when>
 						<c:otherwise>
@@ -62,23 +52,23 @@
 		</nav>
 	</div>
 	<div class="row-fluid">
-		<div id="account-menu" class="span2 navbar-inverse">
+		<div class="span2 navbar-inverse">
 			<ul class="nav navbar-inner nav-pills nav-stacked">
-				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
+				<li><a data-toggle="tab" href="#user">User</a></li>
 				<li><a data-toggle="tab" href="#value">Value</a></li>
 				<li><a data-toggle="tab" href="#menu2">CSS</a></li>
 				<li><a data-toggle="tab" href="#menu3">About</a></li>
 			</ul>
 		</div>
 
-		<div id="account-content" class="span7 pull-right tab-content">
-			<div id="user" class="tab-pane active" ng-controller="accountUser">
+		<div class="span7 offset1 tab-content">
+			<div id="user" class="tab-pane" ng-controller="accountUser">
 				<h3>User Details</h3>
 				<table class="table table-striped">
 					<tbody>
-						<tr ng-repeat="x in [0,1,2]">
-							<td class="span2">{{Keys}}[x]</td>
-							<td class="offset1">{{Values}}[x]</td>
+						<tr ng-repeat="(key,value) in ctrl.user">
+							<td class="span2">{{key}}</td>
+							<td class="offset1 span3">{{value}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -102,5 +92,9 @@
 	</div>
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
 	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/underscore-min.js"></script>
+	<script src="assets/js/angular.min.js"></script>
+	<script src="assets/js/ngStorage.min.js"></script>
+	<script src="assets/js/account.js"></script>
 </body>
 </html>

@@ -9,14 +9,10 @@ body {
 	background-image: url("cart.jpg");
 }
 
-#account-menu {
-	height: 100%;
-}
-
-#account-content {
-	background-color: transparent;
-}
-
 .table-striped tbody tr:nth-child(odd) td {
-	background-color: #f9f9f9;
+	background-color: grey;
+}
+
+.table-striped tbody tr:nth-child(even) td {
+	background-color: crimson;
 }
