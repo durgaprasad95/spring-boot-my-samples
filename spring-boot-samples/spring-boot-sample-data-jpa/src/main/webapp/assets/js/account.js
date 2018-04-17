@@ -1,12 +1,27 @@
 var app = angular.module('accountPage', []);
-app.controller('accountUser', function($scope, $http) {
+
+app.controller('accountUser', function($scope, userService) {
 	var ctrl = this;
-	$scope.user = "";
-	$http.get("http://localhost:8080/jpa/account-user").then(
-			processData(response));
-	processData = function(response) {
-		$scope.user = response.data;
-		console.log(" Hello " + $scope.user.email);
+	var user = {};
+	ctrl.user = null;
+	userService.userinfo().then(function(data,user) {
+		user = data;
+		console.log(user);
+	});
+	console.log(userService.userinfo());
+	console.log(user);
+
+});
+
+app.service('userService', function($http) {
+	var userinfoRoute = "http://localhost:8080/jpa/account-user";
+	return {
+		userinfo : userinfo
 	};
-	console.log($scope.user);
+	function userinfo() {
+		return $http.get(userinfoRoute).then(function(response) {
+			return response;
+		});
+	}
+
 });

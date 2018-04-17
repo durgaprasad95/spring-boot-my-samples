@@ -57,11 +57,11 @@
 				<li><a data-toggle="tab" href="#user">User</a></li>
 				<li><a data-toggle="tab" href="#value">Value</a></li>
 				<li><a data-toggle="tab" href="#menu2">CSS</a></li>
-				<li><a data-toggle="tab" href="#menu3">About</a></li>
+				<li class="active"><a data-toggle="tab" href="#menu3">About</a></li>
 			</ul>
 		</div>
-
-		<div class="span7 offset1 tab-content">
+		<div class="offset2"></div>
+		<div class="span7 tab-content">
 			<div id="user" class="tab-pane" ng-controller="accountUser">
 				<h3>User Details</h3>
 				<table class="table table-striped">
@@ -74,27 +74,108 @@
 				</table>
 			</div>
 			<div id="value" class="tab-pane">
-				<h3>Menu 1</h3>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-					laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<div class="row-fluid">
+					<div class="span3 navbar-inverse">
+						<ul class="nav navbar-inner nav-pills">
+							<li><a data-toggle="tab" href="#addvalue">Add</a></li>
+							<li><a data-toggle="tab" href="#showvalue">Show</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span6 tab-content">
+						<div id="addvalue" class="tab-pane">
+							<h3>Updating Prices:</h3>
+						</div>
+						<div id="showvalue" class="tab-pane">
+							<h3>Present Prices</h3>
+						</div>
+					</div>
+					<div class="offset1"></div>
+				</div>
 			</div>
 			<div id="menu2" class="tab-pane">
 				<h3>Menu 2</h3>
 				<p>Sed ut perspiciatis unde omnis iste natus error sit
 					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
 			</div>
-			<div id="menu3" class="tab-pane">
+			<div id="menu3" class="tab-pane active">
 				<h3>Menu 3</h3>
 				<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicabo.</p>
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
+					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
+					inventore veritatis et quasi architecto beatae vitae dicta sunt
+					explicabo.</p>
 			</div>
 		</div>
+		<div class="offset1"></div>
 	</div>
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
 	<script src="assets/js/bootstrap.js"></script>
 	<script src="assets/js/underscore-min.js"></script>
 	<script src="assets/js/angular.min.js"></script>
-	<script src="assets/js/ngStorage.min.js"></script>
 	<script src="assets/js/account.js"></script>
 </body>
 </html>

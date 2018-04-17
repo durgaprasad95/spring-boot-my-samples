@@ -1,12 +1,26 @@
 @charset "ISO-8859-1";
 
 body {
-	color: yellow;
+	color: #ffffff;
 	background-image: url("cart.jpg");
 	background-size: 1870px 760px;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-image: url("cart.jpg");
+	background-image: url("../img/cart.jpg");
+}
+
+.tab-content {
+	background-color: rgba(0, 0, 255, 0.2);
+	color: white;
+}
+
+.tab-pane .nav {
+	background-color: rgba(0, 0, 255, 0);
+}
+
+.tab-pane .tab-content {
+	text-align: center;
+	background-color: rgba(0, 0, 255, 0);
 }
 
 .table-striped tbody tr:nth-child(odd) td {
@@ -14,5 +28,5 @@ body {
 }
 
 .table-striped tbody tr:nth-child(even) td {
-	background-color: crimson;
+	background-color: #45ab9e;
 }
