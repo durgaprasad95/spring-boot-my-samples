@@ -96,16 +96,18 @@
 										<th></th>
 										<th>NAME</th>
 										<th>QUANTITY</th>
-										<th>COST</th>
+										<th>COST (in Rs.)</th>
 										<th>ACTION</th>
 									</tr>
 								</thead>
 								<tbody ng-repeat="(key,value) in ctrl.values">
 									<tr ng-repeat="x in value">
-										<td ng-if="$first in ctrl.values">{{key}}:</td>
-										<td ng-repeat="(key,value) in x track by $index">{{value}}</td>
+										<td ng-if="$first">{{ctrl.valueHeading(key) | uppercase}}
+											:</td>
+										<td ng-hide="$first"></td>
+										<td ng-repeat="(key,value) in x">{{value | uppercase}}</td>
+										<td><input type="submit" value="Update" /></td>
 									</tr>
-
 								</tbody>
 							</table>
 						</div>

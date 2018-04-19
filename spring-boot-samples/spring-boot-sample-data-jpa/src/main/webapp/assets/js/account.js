@@ -12,36 +12,37 @@ app.controller('userCtrl', function($scope, userService) {
 
 });
 
-app.controller('showValueCtrl', function($scope, valueService) {
+app.controller('showValueCtrl', function($scope, $interval, valueService) {
 	var ctrl = this;
-	var keys = [ "name", "quantity", "cost" ];
-	valueService.values().then(function(data) {
-		data = _.each(data, fucntion(x){
-			_.map(x, function(key, value) {
-			switch (key) {
-			case "fruitValues":
-				key = "Fruits";
-				break;
-			case "vegetableValues":
-				key = "Vegetables";
-				break;
-			case "groceryValues":
-				key = "Groceries";
-				break;
-			}
-			_.each(value, function(y) {
-				return {
-					"name" : y["name"],
-					"quantity" : y["quantity"],
-					"cost" : "Rs: " + y["cost"]
-				};
-			});
-			});
-			});
-		ctrl.values = data;
-		console.log(ctrl.values);
-	});
 
+	ctrl.values = {};
+
+	ctrl.valueHeading = function(key) {
+		if (key === "fruitValues") {
+			return "Fruits";
+		}
+		if (key === "vegetableValues") {
+			return "Vegetables";
+		}
+		if (key === "groceryValues") {
+			return "Groceries";
+		}
+	}
+
+	$interval(function() {
+		valueService.values().then(
+				function(data) {
+					_.map(data, function(value, key) {
+						var formatData = [];
+						_.each(value, function(element) {
+							formatData.push(_.pick(element, 'name', 'quantity',
+									'amount'));
+						});
+						value = formatData;
+						ctrl.values[key] = value;
+					});
+				});
+	}, 1000);
 });
 
 app.service('userService', function($http) {
