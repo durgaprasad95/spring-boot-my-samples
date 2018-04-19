@@ -1,5 +1,8 @@
 package basics.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +17,29 @@ public class ValueServiceImpl implements ValueService {
 
 	@Override
 	public Value addValue(Value value) {
+		value.setQuantity(value.getMeasuringScale(), value.getUnits());
 		valueRepository.save(value);
 		return value;
+	}
+
+	@Override
+	public Value getProduct(String type, String name) {
+		return valueRepository.findByTypeAndName(type, name);
+	}
+
+	@Override
+	public HashMap<String, List<Value>> getAllProducts() {
+		HashMap<String, List<Value>> result = new HashMap<String, List<Value>>();
+		if (!valueRepository.findAllByType("Fruit").isEmpty()) {
+			result.put("fruitValues", valueRepository.findAllByType("Fruit"));
+		}
+		if (!valueRepository.findAllByType("Vegetable").isEmpty()) {
+			result.put("vegetableValues", valueRepository.findAllByType("Vegetable"));
+		}
+		if (!valueRepository.findAllByType("Grocery").isEmpty()) {
+			result.put("groceryValues", valueRepository.findAllByType("Grocery"));
+		}
+		return result;
 	}
 
 }

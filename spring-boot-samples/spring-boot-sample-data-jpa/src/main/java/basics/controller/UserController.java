@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -80,7 +79,6 @@ public class UserController {
 	@RequestMapping(value = "account-user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public User accountUser(@ModelAttribute User user) {
-		System.out.println("###");
 		User result = userService.getUser(user.getUsername());
 		return result;
 	}

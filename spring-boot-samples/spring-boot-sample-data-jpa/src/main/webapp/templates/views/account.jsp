@@ -60,11 +60,10 @@
 				<li class="active"><a data-toggle="tab" href="#menu3">About</a></li>
 			</ul>
 		</div>
-		<div class="offset2"></div>
-		<div class="span7 tab-content">
-			<div id="user" class="tab-pane" ng-controller="accountUser">
+		<div class="span7 offset2 tab-content">
+			<div id="user" class="tab-pane" ng-controller="userCtrl as ctrl">
 				<h3>User Details</h3>
-				<table class="table table-striped">
+				<table class="table borderless">
 					<tbody>
 						<tr ng-repeat="(key,value) in ctrl.user">
 							<td class="span2">{{key}}</td>
@@ -75,23 +74,45 @@
 			</div>
 			<div id="value" class="tab-pane">
 				<div class="row-fluid">
-					<div class="span3 navbar-inverse">
+					<div class="navbar-inverse">
 						<ul class="nav navbar-inner nav-pills">
 							<li><a data-toggle="tab" href="#addvalue">Add</a></li>
 							<li><a data-toggle="tab" href="#showvalue">Show</a></li>
+							<li><a data-toggle="tab" href="#updatevalue">Update</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div class="span6 tab-content">
+					<div class="tab-content">
 						<div id="addvalue" class="tab-pane">
-							<h3>Updating Prices:</h3>
+							<jsp:include page="/addValue" />
 						</div>
-						<div id="showvalue" class="tab-pane">
-							<h3>Present Prices</h3>
+						<div id="showvalue" class="tab-pane"
+							ng-controller="showValueCtrl as ctrl">
+							<h3>Today's Prices</h3>
+							<table class="table borderless">
+								<thead>
+									<tr>
+										<th></th>
+										<th>NAME</th>
+										<th>QUANTITY</th>
+										<th>COST</th>
+										<th>ACTION</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="(key,value) in ctrl.values">
+									<tr ng-repeat="x in value">
+										<td ng-if="$first in ctrl.values">{{key}}:</td>
+										<td ng-repeat="(key,value) in x track by $index">{{value}}</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div id="updatevalue" class="tab-pane">
+							<h3>Update Prices</h3>
 						</div>
 					</div>
-					<div class="offset1"></div>
 				</div>
 			</div>
 			<div id="menu2" class="tab-pane">
@@ -170,7 +191,6 @@
 					explicabo.</p>
 			</div>
 		</div>
-		<div class="offset1"></div>
 	</div>
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
 	<script src="assets/js/bootstrap.js"></script>

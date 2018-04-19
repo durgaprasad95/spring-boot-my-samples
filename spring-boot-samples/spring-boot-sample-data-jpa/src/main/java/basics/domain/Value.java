@@ -5,22 +5,47 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "VALUES")
+@Table(name = "PRICES")
 public class Value {
 
 	@Id
-	@Column(name = "NAME")
+	@Column(name = "VALUE_NAME")
 	private String name;
+
+	@NotNull
+	@Column(name = "TYPE")
+	private String type;
 
 	@Column(name = "QUANTITY")
 	private String quantity;
+
+	@NotNull
+	@Column(name = "AMOUNT")
+	private int amount;
 
 	@Transient
 	private String measuringScale;
 	@Transient
 	private int units;
+
+	public String getMeasuringScale() {
+		return measuringScale;
+	}
+
+	public void setMeasuringScale(String measuringScale) {
+		this.measuringScale = measuringScale;
+	}
+
+	public int getUnits() {
+		return units;
+	}
+
+	public void setUnits(int units) {
+		this.units = units;
+	}
 
 	public String getName() {
 		return name;
@@ -36,6 +61,22 @@ public class Value {
 
 	public void setQuantity(String measuringScale, int units) {
 		this.quantity = units + " " + measuringScale;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 }

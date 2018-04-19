@@ -10,23 +10,28 @@ body {
 }
 
 .tab-content {
+	overflow-y: auto;
 	background-color: rgba(0, 0, 255, 0.2);
 	color: white;
 }
 
-.tab-pane .nav {
+.tab-content .tab-pane .nav {
 	background-color: rgba(0, 0, 255, 0);
 }
 
 .tab-pane .tab-content {
 	text-align: center;
 	background-color: rgba(0, 0, 255, 0);
+	text-align: center;
 }
 
-.table-striped tbody tr:nth-child(odd) td {
-	background-color: grey;
+table {
+	text-align: center;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-collapse: collapse;
 }
 
-.table-striped tbody tr:nth-child(even) td {
-	background-color: #45ab9e;
+.borderless th, .borderless tr {
+	border: none;
 }
