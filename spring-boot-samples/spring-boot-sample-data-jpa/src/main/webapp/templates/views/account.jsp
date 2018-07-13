@@ -54,14 +54,15 @@
 	<div class="row-fluid">
 		<div class="span2 navbar-inverse">
 			<ul class="nav navbar-inner nav-pills nav-stacked">
-				<li><a data-toggle="tab" href="#user">User</a></li>
+				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
 				<li><a data-toggle="tab" href="#value">Value</a></li>
 				<li><a data-toggle="tab" href="#menu2">CSS</a></li>
-				<li class="active"><a data-toggle="tab" href="#menu3">About</a></li>
+				<li><a data-toggle="tab" href="#menu3">About</a></li>
 			</ul>
 		</div>
 		<div class="span7 offset2 tab-content">
-			<div id="user" class="tab-pane" ng-controller="userCtrl as ctrl">
+			<div id="user" class="tab-pane active"
+				ng-controller="userCtrl as ctrl">
 				<h3>User Details</h3>
 				<table class="table borderless">
 					<tbody>
@@ -72,7 +73,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div id="value" class="tab-pane">
+			<div id="value" class="tab-pane" ng-controller="valueCtrl as ctrl">
 				<div class="row-fluid">
 					<div class="navbar-inverse">
 						<ul class="nav navbar-inner nav-pills">
@@ -87,8 +88,7 @@
 						<div id="addvalue" class="tab-pane">
 							<jsp:include page="/addValue" />
 						</div>
-						<div id="showvalue" class="tab-pane"
-							ng-controller="showValueCtrl as ctrl">
+						<div id="showvalue" class="tab-pane">
 							<h3>Today's Prices</h3>
 							<table class="table borderless">
 								<thead>
@@ -106,13 +106,30 @@
 											:</td>
 										<td ng-hide="$first"></td>
 										<td ng-repeat="(key,value) in x">{{value | uppercase}}</td>
-										<td><input type="submit" value="Update" /></td>
+										<td><input type="submit" class="btn"
+											ng-click="ctrl.changeTab(x,'updatevalue')" value="Update" /></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 						<div id="updatevalue" class="tab-pane">
 							<h3>Update Prices</h3>
+							<div class="container-fluid">
+								<form:form class="form-horizontal" method="post">
+									<div class="control-group"
+										ng-repeat="(key,value) in ctrl.updatableValue">
+										<label class="control-label">{{key |uppercase}}:</label>
+										<div class="controls">
+											<input type="text" ng-if="!($last)" disabled="disabled"
+												ng-value="value" /> <input type="text"
+												ng-model="ctrl.amount" ng-if="$last" ng-value="value" />
+										</div>
+									</div>
+									<input type="submit" class="btn btn-primary"
+										ng-click="ctrl.updateValue();ctrl.changeTab('null','showvalue')"
+										value="Save" />
+								</form:form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -122,75 +139,9 @@
 				<p>Sed ut perspiciatis unde omnis iste natus error sit
 					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
 			</div>
-			<div id="menu3" class="tab-pane active">
+			<div id="menu3" class="tab-pane">
 				<h3>Menu 3</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicaboEaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicaboEaque ipsa quae ab illo
-					inventore veritatis et quasi architecto beatae vitae dicta sunt
-					explicabo.</p>
+				<p>Hai Menu3</p>
 			</div>
 		</div>
 	</div>

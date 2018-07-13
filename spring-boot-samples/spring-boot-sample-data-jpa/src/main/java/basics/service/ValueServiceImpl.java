@@ -42,4 +42,22 @@ public class ValueServiceImpl implements ValueService {
 		return result;
 	}
 
+	@Override
+	public Value updateValue(Value value) {
+		Value temp = valueRepository.findByName(value.getName());
+		Value resultValue = null;
+		if (temp != null && value != null) {
+			resultValue = new Value(temp.getName(), temp.getType(), temp.getQuantity(), value.getAmount());
+			valueRepository.delete(temp);
+			valueRepository.save(resultValue);
+		} else {
+			if (temp == null) {
+				System.out.println("Some Database issues are there.Please bear with us");
+			} else {
+				System.out.println("Value " + value + " has errors.");
+			}
+		}
+		return resultValue;
+	}
+
 }

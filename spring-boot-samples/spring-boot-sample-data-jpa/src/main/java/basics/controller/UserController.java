@@ -76,6 +76,14 @@ public class UserController {
 			return "home";
 	}
 
+	@RequestMapping(value = "account", method = RequestMethod.POST)
+	public String accountPagePostfix(@ModelAttribute User user) {
+		if (!StringUtils.isEmpty(user.getUsername()))
+			return "account";
+		else
+			return "home";
+	}
+
 	@RequestMapping(value = "account-user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public User accountUser(@ModelAttribute User user) {

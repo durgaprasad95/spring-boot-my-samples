@@ -47,6 +47,7 @@
 				<td><form:select path="measuringScale">
 						<form:option value="" selected="selected"></form:option>
 						<form:option value="unit">Unit</form:option>
+						<form:option value="lt">Litres</form:option>
 						<form:option value="Kg">Kilograms</form:option>
 						<form:option value="gm">Grams</form:option>
 						<form:option value="Dozen (Dz)">Dozen</form:option>
@@ -58,8 +59,9 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td align="center"><input type="submit" class="btn btn-primary"
-					value="Save Value" /></td>
+				<td align="center"><input type="submit"
+					ng-click="ctrl.refresh();ctrl.changeTab('null','addvalue')"
+					class="btn btn-primary" value="Save Value" /></td>
 			</tr>
 		</table>
 	</form:form>

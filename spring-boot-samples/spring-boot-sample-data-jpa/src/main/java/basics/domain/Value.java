@@ -31,6 +31,17 @@ public class Value {
 	@Transient
 	private int units;
 
+	public Value() {
+
+	}
+
+	public Value(String name, String type, String quantity, int amount) {
+		this.type = type;
+		this.name = name;
+		this.quantity = quantity;
+		this.amount = amount;
+	}
+
 	public String getMeasuringScale() {
 		return measuringScale;
 	}

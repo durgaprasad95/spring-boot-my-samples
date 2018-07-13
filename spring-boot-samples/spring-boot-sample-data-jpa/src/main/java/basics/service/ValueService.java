@@ -12,4 +12,6 @@ public interface ValueService {
 	Value getProduct(String type, String name);
 
 	HashMap<String, List<Value>> getAllProducts();
+
+	Value updateValue(Value value);
 }
