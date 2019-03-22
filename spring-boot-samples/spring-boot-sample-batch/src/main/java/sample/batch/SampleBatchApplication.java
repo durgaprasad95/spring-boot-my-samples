@@ -16,8 +16,7 @@
 
 package sample.batch;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.Step;
+import org.hamcrest.Condition.Step;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -28,6 +27,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -45,8 +45,7 @@ public class SampleBatchApplication {
 
 		return new Tasklet() {
 			@Override
-			public RepeatStatus execute(StepContribution contribution,
-					ChunkContext context) {
+			public RepeatStatus execute(StepContribution contribution, ChunkContext context) {
 				return RepeatStatus.FINISHED;
 			}
 		};
@@ -55,19 +54,18 @@ public class SampleBatchApplication {
 
 	@Bean
 	public Job job() throws Exception {
-		return this.jobs.get("job").start(step1()).build();
+		return (Job) this.jobs.get("job").start((org.springframework.batch.core.Step) step1()).build();
 	}
 
 	@Bean
 	protected Step step1() throws Exception {
-		return this.steps.get("step1").tasklet(tasklet()).build();
+		return (Step) this.steps.get("step1").tasklet(tasklet()).build();
 	}
 
 	public static void main(String[] args) {
-		// System.exit is common for Batch applications since the exit code can be used to
-		// drive a workflow
-		System.exit(SpringApplication
-				.exit(SpringApplication.run(SampleBatchApplication.class, args)));
+		// System.exit is common for Batch applications since the exit code can be used
+		// to drive a workflow
+		System.exit(SpringApplication.exit(SpringApplication.run(SampleBatchApplication.class, args)));
 	}
 
 }
