@@ -29,4 +29,8 @@ public class HelloWorldService {
 		return "Hello " + this.name;
 	}
 
+	public String getErrorMessage() throws Exception {
+		throw new Exception("sample error message");
+	}
+
 }

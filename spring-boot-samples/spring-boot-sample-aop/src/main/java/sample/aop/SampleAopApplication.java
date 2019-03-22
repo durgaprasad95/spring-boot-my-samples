@@ -34,6 +34,10 @@ public class SampleAopApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		System.out.println(this.helloWorldService.getHelloMessage());
+		/*try {
+			System.out.println(this.helloWorldService.getErrorMessage());
+		} catch (Exception e) {
+		}*/
 	}
 
 	public static void main(String[] args) {
