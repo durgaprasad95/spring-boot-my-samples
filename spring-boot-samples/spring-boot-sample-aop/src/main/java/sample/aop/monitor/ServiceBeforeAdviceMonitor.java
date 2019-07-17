@@ -27,7 +27,12 @@ public class ServiceBeforeAdviceMonitor {
 
 	@Before("execution(* sample..*Service.*(..))")
 	public void logServiceAnyAccess(JoinPoint joinPoint) {
-		System.out.println("Before: " + joinPoint);
+		System.out.println("Before By pointcut expression: " + joinPoint);
+	}
+
+	@Before("sample.aop.monitor.ServicePointCutsMonitor.logServiceExecutionPointCut()")
+	public void logServiceAnyAccessByPointCut(JoinPoint joinPoint) {
+		System.out.println("Before by PointCut: " + joinPoint);
 	}
 
 }

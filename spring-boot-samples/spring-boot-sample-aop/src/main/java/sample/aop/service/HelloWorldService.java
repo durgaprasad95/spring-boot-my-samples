@@ -33,4 +33,8 @@ public class HelloWorldService {
 		throw new Exception("sample error message");
 	}
 
+	@DefaultValueReturn(val = "default name is ")
+	public String getAnnotationValue() {
+		return name;
+	}
 }

@@ -21,30 +21,35 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
-
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class ServiceAfterAdviceMonitor {
 
-/*	@AfterReturning("execution(* sample..*Service.*(..))")
+	@AfterReturning("execution(* sample..*Service.*(..))")
 	public void logServiceAccess(JoinPoint joinPoint) {
-		System.out.println("Returned From: " + joinPoint);
+		System.out.println("After Returning By pointcut expression: " + joinPoint);
 	}
 
 	@AfterThrowing(pointcut = "execution(* sample..*Service.*(..))", throwing = "e")
 	public void logServiceErrorAccess(JoinPoint joinPoint, Exception e) {
-		System.out.println("Thrown Exception: " + e.getMessage());
+		System.out.println("Thrown Exception  By pointcut expression: " + e.getMessage());
 	}
 
 	@After("execution(* sample..*Service.*(..))")
-	public void logServiceErrorAccess(JoinPoint joinPoint) {
-		System.out.println("Completed: " + joinPoint);
+	public void logServiceAnyAccess(JoinPoint joinPoint) {
+		System.out.println("After finally By pointcut expression: " + joinPoint);
 	}
-*/
-	@After("execution(void sample.aop.monitor.ServicePointCutsMonitor.logServiceCallPointCut(Object))")
-	public void logServiceErrorAccessByPointCut(JoinPoint joinPoint) {
-		System.out.println("New Test method");
+
+	@After("sample.aop.monitor.ServicePointCutsMonitor.logServiceExecutionPointCut()")
+	public void logServiceAnyAccessByPointCut(JoinPoint joinPoint) {
+		System.out.println("After By PointCut: " + joinPoint);
+	}
+
+	@After(value = "sample.aop.monitor.ServicePointCutsMonitor.logServiceAnnotaionPointCut()")
+	public void logServiceAnyAccessByAnnotaionPointCut(JoinPoint joinPoint) {
+		Object value = joinPoint.getStaticPart().getSignature();
+		System.out.println("After By Annotaion PointCut: " + joinPoint);
 	}
 }
